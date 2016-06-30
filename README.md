@@ -1,5 +1,8 @@
 ## Seafile Docker image
 
+github reference project : https://github.com/strator-dev/seafile-docker/
+docker hub referece image : https://hub.docker.com/r/stratordev/seafile/
+
 ### Concept
 
 The goal of this image : to create a seafile docker image that can be used without the need to run configurations scripts manually or to tweek configurations files. Most of configuration values can be passed to the first docker run command with configuration variables.
