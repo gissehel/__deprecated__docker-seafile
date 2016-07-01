@@ -53,5 +53,6 @@ then
     cp "${SEAHUB_START_SCRIPT}" "${SEAHUB_INIT_SCRIPT}"
     perl -i -ape 's{^case}{before_start;check_init_admin;exit 0;\ncase}' "${SEAHUB_INIT_SCRIPT}"
     bash "${SEAHUB_INIT_SCRIPT}" start
+    rm -f "${SEAHUB_INIT_SCRIPT}"
     touch "${TOKEN}"
 fi
