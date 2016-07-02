@@ -1,6 +1,6 @@
 ## Seafile Docker image
 
-* github reference project : https://github.com/strator-dev/seafile-docker/
+* github reference project : https://github.com/strator-dev/docker-seafile/
 * docker hub referece image : https://hub.docker.com/r/stratordev/seafile/
 
 ### Concept
