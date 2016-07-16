@@ -80,6 +80,59 @@ sudo docker \
   stratordev/seafile
 ```
 
+### Using crane as docker manager
+
+If you're using [**crane**](https://github.com/michaelsauter/crane) as a docker manager tool, here is a [`crane.yaml`](doc/crane.yaml) that match the previous example (from the *Init + classic run usage* section)
+
+```yaml
+containers:
+    seafile-init:
+        image: "stratordev/seafile"
+        run:
+            tty: true
+            interactive: true
+            rm: true
+            volume:
+                - "/opt/dockerstore/seafile:/opt/seafile"
+            env:
+                - "SEAFILE_ADMIN_EMAIL=root@root.com"
+                - "SEAFILE_ADMIN_PASSWORD=Rw5Knb3d91"
+                - "SEAFILE_HOST=this.ismyhost.com"
+                - "SEAFILE_PORT=28080"
+            cmd: "/bin/bash /init"
+    seafile:
+        image: "stratordev/seafile"
+        run:
+            detach: true
+            publish:
+                - "28080:8080"
+            volume:
+                - "/opt/dockerstore/seafile:/opt/seafile"
+```
+
+You then just have to type the first time the command `crane run seafile-init` :
+
+```sh
+$ crane run seafile-init
+[... lot of stuff ...]
+
+----------------------------------------
+Successfully created seafile admin
+----------------------------------------
+
+$ 
+```
+
+And then, each time you want to start/restart the server `crane run seafile` :
+
+```sh
+$ crane run seafile
+Running container seafile ...
+b07b11d881fb265a0d1922a74355d81b428517514c10ee084cfbbeeeffc39b4b
+$ 
+```
+
+And that's it... Your seafile server is up and running.
 
 
 

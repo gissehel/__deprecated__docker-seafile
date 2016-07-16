@@ -1,0 +1,27 @@
+containers:
+    seafile-init:
+        image: "stratordev/seafile"
+        run:
+            tty: true
+            interactive: true
+            rm: true
+            volume:
+                - "/opt/dockerstore/seafile:/opt/seafile"
+            env:
+                - "SEAFILE_ADMIN_EMAIL=root@root.com"
+                - "SEAFILE_ADMIN_PASSWORD=Rw5Knb3d91"
+                - "SEAFILE_HOST=this.ismyhost.com"
+                - "SEAFILE_PORT=28080"
+            cmd: "/bin/bash /init"
+    seafile:
+        image: "stratordev/seafile"
+        run:
+            detach: true
+            publish:
+                - "28080:8080"
+            volume:
+                - "/opt/dockerstore/seafile:/opt/seafile"
+
+
+
+    
