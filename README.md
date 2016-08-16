@@ -19,7 +19,7 @@ sudo mkdir -p /this/will/be/your/data/path
 sudo docker \
   run \
   -d \
-  -e "SEAFILE_VERSION=5.1.3" \
+  -e "SEAFILE_VERSION=5.1.4" \
   -e "SEAFILE_ADMIN_EMAIL=root@root.com" \
   -e "SEAFILE_ADMIN_PASSWORD=Rw5Knb3d91" \
   -e "SEAFILE_HOST=this.ismyhost.com" \
@@ -36,7 +36,7 @@ The first time, the data path will be filled with everything that needs to be do
 
 ### Configuration
 
-* **SEAFILE_VERSION** : The seafile server version you want to use. If not specified 5.1.3 is used.
+* **SEAFILE_VERSION** : The seafile server version you want to use. If not specified 5.1.4 is used.
 * **SEAFILE_ADMIN_EMAIL** : The admin email (that is the login on seafile server). There is a default value, but I won't document it to make sure you won't use it.
 * **SEAFILE_ADMIN_PASSWORD** : The admin password. There is a default value, but I won't document it to make sure you won't use it.
 * **SEAFILE_HOST** : The host as seen from internet (or from the users). If you use a complex system of vhosts and reverse proxies in front of that image, this is the hostname configured in you vhost configuration that may be different than the one where you run your docker image.
@@ -57,7 +57,7 @@ sudo docker \
   run \
   -it \
   --rm=true \
-  -e "SEAFILE_VERSION=5.1.3" \
+  -e "SEAFILE_VERSION=5.1.4" \
   -e "SEAFILE_ADMIN_EMAIL=root@root.com" \
   -e "SEAFILE_ADMIN_PASSWORD=Rw5Knb3d91" \
   -e "SEAFILE_HOST=this.ismyhost.com" \
