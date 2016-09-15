@@ -1,4 +1,6 @@
 [![Stories in Ready](https://badge.waffle.io/strator-dev/docker-seafile.png?label=ready&title=Ready)](https://waffle.io/strator-dev/docker-seafile)
+[![](https://images.microbadger.com/badges/image/stratordev/seafile.svg)](http://microbadger.com/images/stratordev/seafile "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/stratordev/seafile.svg)](http://microbadger.com/images/stratordev/seafile "Get your own version badge on microbadger.com")
+
 ## Seafile Docker image
 
 * github reference project : https://github.com/strator-dev/docker-seafile/
