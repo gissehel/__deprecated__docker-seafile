@@ -1,6 +1,6 @@
 export DEBIAN_FRONTEND=noninteractive
 apt-get -y update
-apt-get install -y ca-certificates nginx python2.7 python-flup python-imaging python-setuptools sqlite3
+apt-get install -y ca-certificates nginx python2.7 python-flup python-imaging python-setuptools sqlite3 sudo
 apt-get install -y -q --force-yes ssl-cert wget
 
 rm -rf /var/lib/apt/lists/*
