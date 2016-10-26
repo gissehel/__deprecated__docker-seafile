@@ -6,7 +6,7 @@ CCNET_CONF="${APP_DIR}/conf/ccnet.conf"
 SEAHUB_CONF="${APP_DIR}/conf/seahub_settings.py"
 TEMP_DIR="/tmp/seafile-install"
 
-[ -z "${SEAFILE_VERSION}" ] && SEAFILE_VERSION="5.1.4"
+[ -z "${SEAFILE_VERSION}" ] && SEAFILE_VERSION="6.0.5"
 
 SEAFILE_FILENAME="seafile-server_${SEAFILE_VERSION}_x86-64.tar.gz"
 SEAFILE_TARGZ="https://bintray.com/artifact/download/seafile-org/seafile/${SEAFILE_FILENAME}"
