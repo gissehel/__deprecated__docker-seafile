@@ -27,13 +27,27 @@ cp /tmp/files/seafile-nginx.conf /etc/nginx/sites-available/seafile
 
 ln -s /etc/nginx/sites-available/seafile /etc/nginx/sites-enabled/seafile
 
-cp /tmp/files/init_data.sh /etc/my_init.d/init_data.sh
-chmod +x /etc/my_init.d/init_data.sh
+deploy-bin() {
+    filename="$1"
+    dest_dir="$2"
+    src_dir="/tmp/files"
+    cp "${src_dir}/${filename}" "${dest_dir}/${filename}"
+    chmod +x "${dest_dir}/${filename}"
+}
 
-cp /tmp/files/init_data_user.sh /opt/image/init_data_user.sh
-chmod +x /opt/image/init_data_user.sh
+deploy-bin-image() {
+    filename="$1"
+    deploy-bin "${filename}" "/opt/image"
+}
 
-ln -s /etc/my_init.d/init_data.sh /init
+deploy-bin "init_data.sh" "/etc/my_init.d"
+deploy-bin-image "init_data_user.sh"
+deploy-bin-image "upgrade.sh"
+deploy-bin-image "upgrade_user.sh"
+deploy-bin-image "find-upgrade.py"
 
-rm -rf /tmp/files
+ln -s "/etc/my_init.d/init_data.sh" "/init"
+ln -s "/opt/image/upgrade.sh" "/upgrade"
+
+rm -rf "/tmp/files"
 
