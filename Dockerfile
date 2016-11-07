@@ -3,6 +3,19 @@ FROM phusion/baseimage:latest
 # Almost entierly rewrote by Abdelrani Djelaili
 MAINTAINER Gissehel <public-dev-github-docker-seafile@gissehel.org>
 
+ARG BUILD_DATE
+ARG VCS_REF
+
+LABEL org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.name="Seafile server" \
+      org.label-schema.description="A simple to use seafile server" \
+      org.label-schema.license="MIT" \
+      org.label-schema.vendor="strator-dev" \
+      org.label-schema.url="https://github.com/strator-dev/docker-seafile" \
+      org.label-schema.vcs-url="https://github.com/strator-dev/docker-seafile" \
+      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.schema-version="1.0"
+
 ADD files /tmp/files
 RUN /bin/bash /tmp/files/build-script.sh
 
