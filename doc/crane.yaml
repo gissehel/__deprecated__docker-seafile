@@ -33,7 +33,7 @@ containers:
             rm: true
             volume:
                 - "/opt/dockerstore/seafile:/opt/seafile"
-            cmd: "/clean"
+            entrypoint: "/clean"
     seafile:
         image: "stratordev/seafile"
         run:

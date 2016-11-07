@@ -183,7 +183,7 @@ containers:
             rm: true
             volume:
                 - "/opt/dockerstore/seafile:/opt/seafile"
-            cmd: "/clean"
+            entrypoint: "/clean"
     seafile:
         image: "stratordev/seafile"
         run:
@@ -246,6 +246,37 @@ Running container seafile ...
 And that's it... Your seafile server is up and running with the new version.
 
 :warning: The upgrade process may ask you things as seafile's upgrade scripts seems to be made to run interactivly.
+
+### Launching garbage collector (GC) with crane
+
+As the GC tool section mentionned, you should:
+1. Stop the seafile server
+2. (optional)
+3. Run the GC script
+4. Run again the seafile server
+
+So it becomes with crane:
+
+```
+$ crane stop seafile
+Stopping container seafile ...
+seafile
+$ # THE ABOVE LINE IS OPTIONAL
+$ crane run seafile-clean --dry-run
+Running container seafile-clean ...
+[... lot of stuff ...]
+$ crane run seafile-clean
+Running container seafile-clean ...
+[... lot of stuff ...]
+$ crane run seafile
+seafile
+Running container seafile ...
+181578da4252625c28d661e888517e5915c1592c61617c5245bb52a4258e483c
+```
+
+And that's it... Your seafile server is up and running with the GC tool passed ok.
+
+Note: that can be scripted and cron-tabbed.
 
 ### Related projects
 
