@@ -108,6 +108,41 @@ sudo docker \
 ```
 :warning: The upgrade process may ask you things as seafile's upgrade scripts seems to be made to run interactivly.
 
+### Launching garbage collector (GC)
+
+As strange as it may look like, seafile doesn't doesn't clean itself it's delete data. You need to explicitely run garbage collection from time to time.
+
+Steps:
+
+1. Stop the seafile server (eg: `docker stop seafile; docker rm -f -v seafile`)
+2. (optional) Run the GC tool with "dry run" (see below)
+3. Run the GC tool (see below)
+4. Run again the seafile server (like you usually do, see the section before the previous section)
+
+The GC tool command:
+```
+sudo docker \
+  run \
+  -it \
+  --rm=true \
+  --name="seafile-clean" \
+  -v "/this/will/be/your/data/path:/opt/seafile" \
+  stratordev/seafile \
+  /clean
+```
+
+You may want to see if all will be fine without changing anything before really launching the GC tool, so you may just launch it in "dry run" just before:
+```
+sudo docker \
+  run \
+  -it \
+  --rm=true \
+  --name="seafile-clean" \
+  -v "/this/will/be/your/data/path:/opt/seafile" \
+  stratordev/seafile \
+  /clean --dry-run
+```
+
 ### Using crane as docker manager
 
 If you're using [**crane**](https://github.com/michaelsauter/crane) as a docker manager tool, here is a [`crane.yaml`](doc/crane.yaml) that match the previous example (from the *Init + classic run usage* section)
@@ -140,6 +175,15 @@ containers:
             env:
                 - "SEAFILE_VERSION=6.0.5"
             cmd: "/upgrade"
+    seafile-clean:
+        image: "stratordev/seafile"
+        run:
+            tty: true
+            interactive: true
+            rm: true
+            volume:
+                - "/opt/dockerstore/seafile:/opt/seafile"
+            cmd: "/clean"
     seafile:
         image: "stratordev/seafile"
         run:

@@ -45,9 +45,11 @@ deploy-bin-image "init_data_user.sh"
 deploy-bin-image "upgrade.sh"
 deploy-bin-image "upgrade_user.sh"
 deploy-bin-image "find-upgrade.py"
+deploy-bin-image "clean.sh"
 
 ln -s "/etc/my_init.d/init_data.sh" "/init"
 ln -s "/opt/image/upgrade.sh" "/upgrade"
+ln -s "/opt/image/clean.sh" "/clean"
 
 rm -rf "/tmp/files"
 

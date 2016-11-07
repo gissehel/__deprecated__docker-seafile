@@ -25,6 +25,15 @@ containers:
             env:
                 - "SEAFILE_VERSION=6.0.5"
             cmd: "/upgrade"
+    seafile-clean:
+        image: "stratordev/seafile"
+        run:
+            tty: true
+            interactive: true
+            rm: true
+            volume:
+                - "/opt/dockerstore/seafile:/opt/seafile"
+            cmd: "/clean"
     seafile:
         image: "stratordev/seafile"
         run:
