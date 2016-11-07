@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ -z "$VCS_REF" ]]; then
-    VCS_REF=$(git rev-parse HEAD)
+    VCS_REF=$(git rev-parse --short HEAD)
 fi
 
 BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
