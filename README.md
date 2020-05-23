@@ -1,9 +1,9 @@
-[![](https://images.microbadger.com/badges/image/stratordev/seafile.svg)](http://microbadger.com/images/stratordev/seafile "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/stratordev/seafile.svg)](http://microbadger.com/images/stratordev/seafile "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/gissehel/seafile.svg)](http://microbadger.com/images/gissehel/seafile "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/gissehel/seafile.svg)](http://microbadger.com/images/gissehel/seafile "Get your own version badge on microbadger.com")
 
 ## Seafile Docker image
 
-* github reference project : https://github.com/strator-dev/docker-seafile/
-* docker hub referece image : https://hub.docker.com/r/stratordev/seafile/
+* github reference project : https://github.com/gissehel/docker-seafile/
+* docker hub referece image : https://hub.docker.com/r/gissehel/seafile/
 
 ### Concept
 
@@ -28,7 +28,7 @@ sudo docker \
   -v "/this/will/be/your/data/path:/opt/seafile" \
   -p 0.0.0.0:8080:8080 \
   --name="seafile" \
-  stratordev/seafile
+  gissehel/seafile
 ```
 
 And that's it.
@@ -69,7 +69,7 @@ sudo docker \
   -e "SEAFILE_PORT=8080" \
   -v "/this/will/be/your/data/path:/opt/seafile" \
   --name="seafile-init" \
-  stratordev/seafile \
+  gissehel/seafile \
   /init
 ```
 It will create everything needed interactively. When the command ends, everything is ready.
@@ -82,7 +82,7 @@ sudo docker \
   -v "/this/will/be/your/data/path:/opt/seafile" \
   -p 0.0.0.0:8080:8080 \
   --name="seafile" \
-  stratordev/seafile
+  gissehel/seafile
 ```
 
 ### Upgrading
@@ -103,7 +103,7 @@ sudo docker \
   -e "SEAFILE_VERSION=6.0.5" \
   --name="seafile-upgrade" \
   -v "/this/will/be/your/data/path:/opt/seafile" \
-  stratordev/seafile \
+  gissehel/seafile \
   /upgrade
 ```
 :warning: The upgrade process may ask you things as seafile's upgrade scripts seems to be made to run interactivly.
@@ -127,7 +127,7 @@ sudo docker \
   --rm=true \
   --name="seafile-clean" \
   -v "/this/will/be/your/data/path:/opt/seafile" \
-  stratordev/seafile \
+  gissehel/seafile \
   /clean
 ```
 
@@ -139,7 +139,7 @@ sudo docker \
   --rm=true \
   --name="seafile-clean" \
   -v "/this/will/be/your/data/path:/opt/seafile" \
-  stratordev/seafile \
+  gissehel/seafile \
   /clean --dry-run
 ```
 
@@ -150,7 +150,7 @@ If you're using [**crane**](https://github.com/michaelsauter/crane) as a docker 
 ```yaml
 containers:
     seafile-init:
-        image: "stratordev/seafile"
+        image: "gissehel/seafile"
         run:
             tty: true
             interactive: true
@@ -165,7 +165,7 @@ containers:
                 - "SEAFILE_PORT=28080"
             cmd: "/init"
     seafile-upgrade:
-        image: "stratordev/seafile"
+        image: "gissehel/seafile"
         run:
             tty: true
             interactive: true
@@ -176,7 +176,7 @@ containers:
                 - "SEAFILE_VERSION=6.0.5"
             cmd: "/upgrade"
     seafile-clean:
-        image: "stratordev/seafile"
+        image: "gissehel/seafile"
         run:
             tty: true
             interactive: true
@@ -185,7 +185,7 @@ containers:
                 - "/opt/dockerstore/seafile:/opt/seafile"
             entrypoint: "/clean"
     seafile:
-        image: "stratordev/seafile"
+        image: "gissehel/seafile"
         run:
             detach: true
             publish:
@@ -280,8 +280,8 @@ Note: that can be scripted and cron-tabbed.
 
 ### Related projects
 
-* [docker-seafile](https://github.com/strator-dev/docker-seafile/) : A docker image for seafile server
-* [docker-seafile-client](https://github.com/strator-dev/docker-seafile-client/) : A docker image for seafile client (interface less)
+* [docker-seafile](https://github.com/gissehel/docker-seafile/) : A docker image for seafile server
+* [docker-seafile-client](https://github.com/gissehel/docker-seafile-client/) : A docker image for seafile client (interface less)
 * [seafile](https://www.seafile.com/) : The seafile project main page
 * [docker](http://docker.com/) : The docker project
 
